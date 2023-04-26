@@ -155,7 +155,7 @@ class TestAccountService(TestCase):
         test_account = AccountFactory()
         resp = self.client.post(
             BASE_URL,
-            json = test_account.serialize()
+            json=test_account.serialize()
         )
         self.assertEqual(resp.status_code, status.HTTP_201_CREATED)
 
@@ -163,7 +163,7 @@ class TestAccountService(TestCase):
         new_account["name"] = "Mojmir"
         resp = self.client.put(
             f"{BASE_URL}/{new_account['id']}",
-            json = new_account
+            json=new_account
         )
         self.assertEqual(resp.status_code, status.HTTP_200_OK)
         updated_account = resp.get_json()
@@ -181,4 +181,3 @@ class TestAccountService(TestCase):
         """It should not allow and illegal method call"""
         resp = self.client.delete(BASE_URL)
         self.assertEqual(resp.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-
