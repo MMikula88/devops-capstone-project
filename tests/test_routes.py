@@ -125,7 +125,7 @@ class TestAccountService(TestCase):
             BASE_URL,
             json=account.serialize(),
             content_type="test/html"
-            )
+        )
         self.assertEqual(response.status_code, status.HTTP_415_UNSUPPORTED_MEDIA_TYPE)
 
     # ADD YOUR TEST CASES HERE ...
@@ -195,8 +195,8 @@ class TestAccountService(TestCase):
             'X-XSS-Protection': '1; mode=block',
             'X-Content-Type-Options': 'nosniff',
             'Content-Security-Policy': 'default-src \'self\'; object-src \'none\'',
-            'Referrer-Policy': 'strict-origin-when-cross-origin'
-            }
+            'Referrer-Policy': 'strict-origin-when-cross-origin',
+        }
         for key, value in headers.items():
             self.assertEqual(response.headers.get(key), value)
 
